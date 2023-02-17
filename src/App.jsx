@@ -7,11 +7,8 @@ import Map from "./components/Map";
 function App() {
   const [ipAddress, setIpAddress] = useState(null);
   const [ipData, setIpData] = useState(null);
-  const [apiKey, setApiKey] = useState("");
 
-  useEffect(() => {
-    setApiKey(process.env.API_KEY);
-  }, []);
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
   useEffect(() => {
     const fetchIpAddress = async () => {
@@ -31,7 +28,7 @@ function App() {
     const fetchIpData = async () => {
       try {
         const response = await fetch(
-          `https://geo.ipify.org/api/v2/country,city?apiKey=${apiKey}&ipAddress=${ipAddress}`
+          `https://geo.ipify.org/api/v2/country,city?apiKey=${API_KEY}&ipAddress=${ipAddress}`
         );
         const data = await response.json();
         setIpData(data);
