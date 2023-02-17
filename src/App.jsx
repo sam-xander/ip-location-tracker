@@ -10,7 +10,7 @@ function App() {
   const [apiKey, setApiKey] = useState("");
 
   useEffect(() => {
-    setApiKey(import.meta.env.VITE_API_KEY);
+    setApiKey(process.env.VITE_API_KEY);
   }, []);
 
   useEffect(() => {
